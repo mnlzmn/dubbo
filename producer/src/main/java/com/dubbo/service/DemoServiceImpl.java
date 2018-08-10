@@ -10,7 +10,6 @@ import com.dubbo.api.DemoService;
 @Service
 public class DemoServiceImpl implements DemoService {
 
-
     @Override
     public int demo() {
         System.out.println("/******************/消费成功");

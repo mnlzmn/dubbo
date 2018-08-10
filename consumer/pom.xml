@@ -11,5 +11,13 @@
 
     <artifactId>consumer</artifactId>
 
+    <dependencies>
+        <!--api-->
+        <dependency>
+            <groupId>com.test</groupId>
+            <artifactId>api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>
