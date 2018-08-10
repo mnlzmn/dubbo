@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="true" scanPeriod="10 seconds">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50}[%line] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!-- 按照每天生成日志文件 -->
+    <appender name="FILE"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--日志文件输出的文件名-->
+            <FileNamePattern>logs/log.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50}[%line] - %msg%n</pattern>
+            <!--<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{100} - %msg%n</pattern>-->
+        </encoder>
+        <!--日志文件最大的大小-->
+        <!--<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">-->
+            <!--<MaxFileSize>10MB</MaxFileSize>-->
+        <!--</triggeringPolicy>-->
+    </appender>
+    <if condition='property("elk.host") != "" '>
+        <then>
+            <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+                <param name="Encoding" value="UTF-8"/>
+                <remoteHost>${elk.host}</remoteHost>
+                <port>${elk.port}</port>
+                <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+            </appender>
+        </then>
+    </if>
+
+
+    <logger name="org.apache" level="warn"/>
+    <logger name="org.dozer" level="warn"/>
+    <logger name="com.alibaba" level="warn"/>
+    <logger name="org.springframework" level="debug" /> <!-- 显示spring加载流程 -->
+    <logger name="org.mybatis.spring" level="info" />
+    <logger name="com.alibaba.dubbo.monitor.dubbo.DubboMonitor" level="OFF"/>
+</configuration>
