@@ -1,5 +1,4 @@
-# dubbo
-dubbo+spring整合
+# dubbo+spring整合
 ---------------------------------
 ## api项目
 
@@ -8,7 +7,7 @@ dubbo+spring整合
 public interface service{}
 ```
 ---------------------------------
-## provider:
+## provider项目:
 
 * pom文件  
 ```xml
@@ -91,6 +90,13 @@ public interface service{}
     <context:annotation-config/>
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 </beans>
+```
+* 接口实现
+```java
+import com.alibaba.dubbo.config.annotation.Service;
+
+@service
+public class ServiceImpl implements Service{}
 ```
 * 启动
 ```java
