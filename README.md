@@ -12,6 +12,12 @@ public interface service{}
 
 * pom文件  
 ```xml
+ <!--api-->
+<dependency>
+    <groupId>com.test</groupId>
+    <artifactId>api</artifactId>
+    <version>1.0-SNAPSHOT</version>
+</dependency>
 <!--dubbo-->
 <dependency>
     <groupId>com.alibaba</groupId>
@@ -85,4 +91,12 @@ public interface service{}
     <context:annotation-config/>
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 </beans>
+```
+* 启动
+```
+public class Main {
+    public static void main(String[] args) {
+        com.alibaba.dubbo.container.Main.main(args);
+    }
+}
 ```
