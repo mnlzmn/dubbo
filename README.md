@@ -4,7 +4,7 @@ dubbo+spring整合
 ## api项目
 
 * 声明接口
-```
+```java
 public interface service{}
 ```
 ---------------------------------
@@ -93,7 +93,7 @@ public interface service{}
 </beans>
 ```
 * 启动
-```
+```java
 public class Main {
     public static void main(String[] args) {
         com.alibaba.dubbo.container.Main.main(args);
