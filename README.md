@@ -106,3 +106,20 @@ public class Main {
     }
 }
 ```
+
+# consumer项目
+* applicationContext.xml 
+```
+ <dubbo:application name="dubbo-consumer" logger="slf4j"/>
+ <dubbo:registry address="zookeeper://47.105.47.171:2181"/>
+ <dubbo:consumer check="false"/>
+```
+
+* 消费
+```java
+import com.alibaba.dubbo.config.annotation.Reference;
+
+@Reference
+private Service service;
+
+```
