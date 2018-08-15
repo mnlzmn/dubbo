@@ -7,7 +7,7 @@
 public interface service{}
 ```
 ---------------------------------
-## provider项目:
+## provider项目
 
 * pom文件  
 ```xml
